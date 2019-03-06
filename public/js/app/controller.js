@@ -16,6 +16,9 @@ const CTRL = (function(MDL, VIEW) {
     const handleEquals = () => {
         const items = MDL.parseExpression();
         let totalValue;
+        
+        if( isNaN(items.numOne) || isNaN(items.numTwo) || !items.operator) return null;
+
         switch(items.operator) {
             case("+"):
                 totalValue = items.numOne + items.numTwo;
@@ -52,6 +55,7 @@ const CTRL = (function(MDL, VIEW) {
         const value = event.target.getAttribute("number");
         const number = new Item("number", value);
         MDL.pushItem(number);
+        console.log( JSON.stringify( MDL.getExpression(), null, 2 ) )
         VIEW.appendDisplay();
     };
     
@@ -59,6 +63,7 @@ const CTRL = (function(MDL, VIEW) {
         const value = event.target.getAttribute("operator");
         const operator = new Item("operator", value);
         MDL.pushItem(operator);
+        console.log( JSON.stringify( MDL.getExpression(), null , 2 ) )
         VIEW.appendDisplay();
     };
 
