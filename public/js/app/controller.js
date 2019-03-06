@@ -51,18 +51,14 @@ const CTRL = (function(MDL, VIEW) {
     const handleNumber = (event) => {
         const value = event.target.getAttribute("number");
         const number = new Item("number", value);
-        console.log(number);
         MDL.pushItem(number);
-        console.log(JSON.stringify(MDL.getExpression(), null, 2));
         VIEW.appendDisplay();
     };
     
     const handleOperator = (event) => {
         const value = event.target.getAttribute("operator");
         const operator = new Item("operator", value);
-        console.log(operator);
         MDL.pushItem(operator);
-        console.log(JSON.stringify(MDL.getExpression(), null, 2));
         VIEW.appendDisplay();
     };
 
