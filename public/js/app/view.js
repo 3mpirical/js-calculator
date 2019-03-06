@@ -18,13 +18,21 @@ const VIEW = (function(MDL) {
         let node = document.createElement("div");
         node.classList.add("expression");
         node.innerHTML = expression;
-        
         elements.display.appendChild(node);
     };
+
+    const cannotBeZero = () => {
+        let node = document.createElement("div");
+        node.classList.add("expression");
+        node.classList.add("divide-by-zero");
+        node.innerHTML = `<span>Silly Human. Dividing By Zero Is An Impossibility. Try Again.</span>`;
+        elements.display.appendChild(node);
+    };  
 
     return {
         clearDisplay,
         appendDisplay,
+        cannotBeZero,
     };
 } (MDL) );
 

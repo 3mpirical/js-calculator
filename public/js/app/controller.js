@@ -27,7 +27,14 @@ const CTRL = (function(MDL, VIEW) {
                 totalValue = items.numOne * items.numTwo; 
                 break;
             case("/"):
-                totalValue = items.numOne / items.numTwo;
+                if(items.numTwo === 0) {
+                    MDL.clearExpression();
+                    VIEW.clearDisplay();
+                    VIEW.cannotBeZero();
+                    return;
+                } else {
+                    totalValue = items.numOne / items.numTwo;
+                }
                 break;
         }
         const newItem = new Item("number", totalValue);
@@ -72,8 +79,9 @@ const CTRL = (function(MDL, VIEW) {
 ///// Execution and Listeners
 elements.calcContainer.addEventListener("click", (event) => {
     if(event.target.matches(".equals")) { 
-        CTRL.handleEquals();
-
+        if(MDL.getExpression().length > 0) {
+            CTRL.handleEquals();
+        }
     } else if(event.target.matches(".clear")) { 
         CTRL.handleClear();
 
@@ -81,6 +89,8 @@ elements.calcContainer.addEventListener("click", (event) => {
         CTRL.handleNumber(event);
 
     } else if(event.target.matches(".operator")) {
-        CTRL.handleOperator(event);
+        if(MDL.getExpression().length > 0) {
+            CTRL.handleOperator(event);
+        }
     }
 });
