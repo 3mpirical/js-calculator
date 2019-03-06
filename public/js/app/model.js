@@ -34,8 +34,8 @@ const MDL = (function() {
         });
 
         return {
-            numOne: parseInt(numOne),
-            numTwo: parseInt(numTwo),
+            numOne: parseFloat(numOne),
+            numTwo: parseFloat(numTwo),
             operator,
         };
     };
