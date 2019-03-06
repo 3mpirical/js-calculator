@@ -40,6 +40,15 @@ body {
     border-radius: 8px;
 }
 
+.expression {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 1rem;
+    font-size: 4rem;
+    color: black;
+}
+
 .numbers-container {
     display: flex;
     justify-content: flex-start;
